@@ -1,0 +1,30 @@
+<h4 class="pt-3 pb-3">Template-driven form with validation and custome diractive [AppBackgroundDirective]</h4>
+<div class="row">
+    <div class="col-4">
+        <form  class=" p-4" (ngSubmit)="onSumbit()" #f="ngForm" [appAppBackground]="'red'" defaultColor="blue">
+            <div class="form-group p-2">
+                <label for="nameInput">Name</label>
+                <input type="text" ngModel #name="ngModel" name="name" class="form-control" id="nameInput" required>
+                <span *ngIf="!name.valid&&name.touched">Please enter a name</span>
+            </div>
+            <div class="form-group p-2">
+                <button class="btn btn-primary " type="button" (click)="suggestName()">Suggest a name</button>
+            </div>
+            <div class="form-group p-2">
+                <label for="descriptionInput">Email</label>
+                <input type="text" ngModel required email name="email" #email="ngModel" class="form-control"
+                    id="descriptionInput">
+                <span *ngIf="!email.valid && email.touched">Please enter a valid email</span>
+            </div>
+
+            <div class="form-check p-2" *ngFor="let gender of genders">
+                <input type="radio" class="form-check-input" name="gender" required="" ngModel [value]="gender">
+                <label for="gender" class="form-check-label">{{gender}}</label>
+            </div>
+
+            <div class="form-group p-2">
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

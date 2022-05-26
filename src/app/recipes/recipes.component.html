@@ -1,0 +1,27 @@
+<h3 [ngClass]="!dataSubmitted? 'txt-color':''">Recipes</h3>
+
+<div class="row">
+    <div class="col-6">
+        <app-add-recipe (recipeAdded)="addRecipe($event)">
+            <div class="form-group pt-2 pb-2">
+                <button class="btn btn-primary" (click)="introduceChiled()">Access Chiled component using
+                    @viewChiled</button>
+            </div>
+            <hr>
+            <div class="form-group p-2">
+                <label for="descriptionInput p-1">@viewChiled example</label>
+                <input type="text" #chiledRef class="form-control pt-2" id="descriptionInput">
+                <hr>
+                <p #contentParagraph class="pt-2 fw-bold">Text Content for ContentChiled example</p>
+            </div>
+        </app-add-recipe>
+    </div>
+    <div class="col-md-3">
+        <h6>Recipe List</h6>
+        <app-recipes-list *ngFor="let recipe of recipes" [recipe]="recipe" (click)="showRecipeDeatil(recipe)"></app-recipes-list>
+    </div>
+    <div class="col-md-3">
+        <h6>Recipe Details</h6>
+        <app-recipes-detail></app-recipes-detail>
+    </div>
+</div>

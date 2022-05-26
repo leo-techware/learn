@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <a class="nav-link" routerLink="">Recipes </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/posts">Posts </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['shopping-list',5,'rice']">Protected route [canActivate] </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['profile','10','leo']" fragment="loading"
+                        [queryParams]="{allowEdit:'10'}">Profile [CanDeactivateGuard] </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" (click)="goToSettings()">Settings </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,53 @@
+<h6>Add recipe</h6>
+<div class="row">
+    <div class="col-6 ">
+        <div class="bg-dark p-4 text-white">
+            <ng-content></ng-content>
+            <hr>
+            <div class="form-group p-2">
+                <button class="btn btn-primary" (click)="alertElementContent()">Access content using
+                    @ContentChild</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="bg-dark p-4 text-white">
+            <div *ngIf="!dataSubmitted; else Confirmation">
+                <form [formGroup]="recipeForm" (ngSubmit)="onSumbit()">
+                    <div class="form-group p-2">
+                        <label for="nameInput">Recipe Name</label>
+                        <input type="text" formControlName="name" class="form-control" id="nameInput">
+                    </div>
+                    <div *ngIf="f.name.errors" class="p-2 text-danger">
+                        <div *ngIf="f.name.errors.required">Recipe Name is required</div>
+                    </div>
+                    <div class="form-group p-2">
+                        <label for="descriptionInput">Recipe Description</label>
+                        <input type="text" formControlName="description" class="form-control" id="descriptionInput">
+                    </div>
+                    <div *ngIf="f.description.errors" class="p-2 text-danger">
+                        <div *ngIf="f.description.errors.required">Recipe Description is required</div>
+                    </div>
+                    <div class="form-group p-2">
+                        <label for="recipeImage">Recipe image Url</label>
+                        <input type="text" formControlName="image" class="form-control" id="recipeImage">
+                    </div>
+                    <div *ngIf="f.image.errors" class="p-2 text-danger">
+                        <div *ngIf="f.image.errors.required">Recipe image Url is required</div>
+                    </div>
+                    <div class="form-group p-2">
+                        <input [disabled]="!recipeForm.valid" type="submit" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <ng-template #Confirmation>
+            <div class="p-4">
+                <p class="text-light">Thank you for Submitting the data!</p>
+                <button class="btn btn-secondary" (click)="dataSubmitted=false">Add More</button>
+
+            </div>
+        </ng-template>
+    </div>
+
+</div>
