@@ -7,11 +7,11 @@ import { AuthGuard } from './shared/services/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: "recipe",
+    path: "",
     loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesModule) //Lazy Loading routes
   },
   {
-    path: "",
+    path: "auth",
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) //Lazy Loading routes
   },
   {
