@@ -21,7 +21,6 @@ const routes: Routes = [
   },
   {
     path: "profile/:id/:name",
-    canActivate: [AuthGuard],
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) //Lazy Loading routes
   },
   {
